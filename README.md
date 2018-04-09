@@ -20,8 +20,8 @@ npm install --save-dev analyze-webpack-plugin
 
 **webpack.config.js**
 
-```bash
-const AnalyzeWebpackPlugin = analyze-webpack-plugin
+```js
+const AnalyzeWebpackPlugin = require('analyze-webpack-plugin')
 
 module.exports = {
   entry: './index.js',

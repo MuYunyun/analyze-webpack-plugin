@@ -1,4 +1,5 @@
-const Self = require('../../../');
+import AnalyzeWebpackPlugin from '../../../src/cjs'
+
 const path = require('path')
 
 module.exports = {
@@ -11,6 +12,6 @@ module.exports = {
     rules: [],
   },
   plugins: [
-    new Self({}),
+    new AnalyzeWebpackPlugin({}),
   ],
 };

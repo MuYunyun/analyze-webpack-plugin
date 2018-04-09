@@ -1,6 +1,6 @@
 {
   "name": "analyze-webpack-plugin",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "desc",
   "main": "src/cjs.js",
   "repository": "https://github.com/webpack-contrib/mini-css-extract-plugin",
@@ -66,6 +66,7 @@
     ]
   },
   "dependencies": {
+    "analyze-webpack-plugin": "^0.1.0",
     "loader-utils": "^1.1.0",
     "webpack-sources": "^1.1.0"
   }

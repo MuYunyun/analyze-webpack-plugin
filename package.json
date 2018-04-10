@@ -1,44 +1,49 @@
 {
   "name": "analyze-webpack-plugin",
   "version": "0.1.2",
-  "description": "desc",
+  "description": "analyze-webpack-plugin",
   "main": "dist/cjs.js",
-  "repository": "https://github.com/webpack-contrib/mini-css-extract-plugin",
-  "author": "Tobias Koppers @sokra",
+  "repository": "https://github.com/MuYunyun/analyze-webpack-plugin",
+  "author": "muyunyun",
   "license": "MIT",
   "private": false,
   "scripts": {
     "webpack-defaults": "webpack-defaults",
     "start": "npm run build -- -w",
     "appveyor:test": "npm run test",
-    "build": "cross-env NODE_ENV=production babel src -d dist --ignore 'src/**/*.test.js'",
-    "clean": "del-cli dist",
+    "build": "npm run buildsite && npm run buildplugin",
+    "prebuildplugin": "rm -rf lib && mkdir lib",
+    "buildplugin": "webpack --config config/webpack.prod.js",
+    "postbuildplugin": "babel src/plugin.js --out-file lib/plugin.js && cp src/shared/style.css lib",
+    "prebuildsite": "rm -rf dist-site && mkdir dist-site",
+    "buildsite": "webpack --config config/webpack.site.js && babel-node src/site/serverRender.js",
+    "postbuildsite": "cp src/shared/style.css test/stats-demo.json dist-site",
+    "dev": "webpack-dev-server --config config/webpack.dev.js",
     "lint": "eslint --cache src test",
     "lint-staged": "lint-staged",
-    "prebuild": "npm run clean",
     "prepublish": "npm run build",
     "release": "standard-version",
     "security": "nsp check",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --collectCoverageFrom='src/**/*.js' --coverage",
-    "test:manual": "webpack-dev-server test/manual/src/index.js --open --config test/manual/webpack.config.js",
-    "travis:lint": "npm run lint && npm run security",
-    "travis:test": "npm run test -- --runInBand",
-    "travis:coverage": "npm run test:coverage -- --runInBand"
+    "test:manual": "webpack-dev-server test/manual/src/index.js --open --config test/manual/webpack.config.js"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-jest": "^22.2.2",
+    "babel-loader": "^7.1.4",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
     "cross-env": "^5.1.3",
     "css-loader": "^0.28.10",
-    "del-cli": "^1.1.0",
     "eslint": "^4.17.0",
     "eslint-config-webpack": "^1.2.5",
     "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-react": "^7.7.0",
     "jest": "^22.2.2",
     "lint-staged": "^6.1.0",
     "nsp": "^3.1.0",
@@ -52,11 +57,8 @@
   "files": [
     "dist"
   ],
-  "engines": {
-    "node": ">= 6.11.5"
-  },
   "peerDependencies": {
-    "webpack": "^4.4.0"
+    "webpack": "^4.0.0"
   },
   "pre-commit": "lint-staged",
   "lint-staged": {
@@ -66,8 +68,11 @@
     ]
   },
   "dependencies": {
-    "analyze-webpack-plugin": "^0.1.0",
+    "d3": "^5.0.0",
     "loader-utils": "^1.1.0",
+    "mkdirp": "^0.5.1",
+    "react": "^16.3.1",
+    "react-dom": "^16.3.1",
     "webpack-sources": "^1.1.0"
   }
 }

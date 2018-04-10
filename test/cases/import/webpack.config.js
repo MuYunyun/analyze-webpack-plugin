@@ -8,10 +8,7 @@ module.exports = {
     path: path.join(__dirname, 'dist'),
     filename: '[name].[chunkhash:8].js',
   },
-  module: {
-    rules: [],
-  },
   plugins: [
-    new AnalyzeWebpackPlugin({}),
+    new AnalyzeWebpackPlugin({ filename: 'analyze.html' }),
   ],
 };

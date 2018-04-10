@@ -11,7 +11,7 @@ analyze-webpack-plugin is to help analyze some useful dates so that we can optim
 <h2 align="center">Install</h2>
 
 ```bash
-npm install --save-dev analyze-webpack-plugin
+npm install --save-dev analyze-webpack-plugin || yarn add --dev analyze-webpack-plugin
 ```
 
 <h2 align="center">Usage</h2>

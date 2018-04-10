@@ -1,6 +1,6 @@
-import fs from 'fs'
-import webpack from 'webpack'
-import path from 'path'
+const fs = require('fs')
+const webpack = require('webpack')
+const path = require('path')
 
 describe('TestCases', () => {
   const casesDirectory = path.resolve(__dirname, 'cases');

@@ -171,7 +171,7 @@ export default class extends Component {
 
     return (
       <div>
-        <h1>Webpack Visualizer</h1>
+        <h1>Analyze Webpack</h1>
 
         {assetList}
         {this.renderUploadArea(uploadAreaClass)}
@@ -188,7 +188,7 @@ export default class extends Component {
 
           <h2>Try the Plugin!</h2>
           <p>This tool is also available as a webpack plugin. See <a href="https://github.com/chrisbateman/webpack-visualizer#plugin-usage">here</a> for usage details.</p>
-          <p><code>npm install webpack-visualizer-plugin</code></p>
+          <p><code>npm install analyze-webpack-plugin</code></p>
         </Footer>
       </div>
     );

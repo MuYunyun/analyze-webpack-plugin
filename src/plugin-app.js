@@ -77,7 +77,7 @@ export default React.createClass({
 
     return (
       <div>
-        <h1>Webpack Visualizer</h1>
+        <h1>Analyze Webpack</h1>
 
         {assetList}
 

@@ -3,7 +3,7 @@ export default function (cfg) {
     `<!doctype html>
 <head>
     <meta charset="utf-8">
-    <title>Webpack Visualizer</title>
+    <title>Analyze Webpack</title>
     <meta name="description" content="Visualize and analyze your Webpack bundle to see which modules are taking up space and which might be duplicates." />
     <meta name="viewport" content="width=750, initial-scale=1"/>
     <link rel="stylesheet" href="style.css"/>

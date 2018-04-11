@@ -11,7 +11,7 @@ analyze-webpack-plugin is to help analyze some useful dates so that we can optim
 <h2 align="center">Install</h2>
 
 ```bash
-npm install --save-dev analyze-webpack-plugin || yarn add --dev analyze-webpack-plugin
+npm install --save-dev analyze-webpack-plugin
 ```
 
 <h2 align="center">Usage</h2>
@@ -21,8 +21,11 @@ npm install --save-dev analyze-webpack-plugin || yarn add --dev analyze-webpack-
 该插件 fork 自 [webpack-visualizer](https://github.com/chrisbateman/webpack-visualizer/blob/master/package.json)，目前扩展出的功能如下：
 
 -[x] 支持作为 webpack 4.x 的插件
+
 -[x] 升级插件的技术栈，比如升级 d3 到 v4 版本
+
 -[ ] 实现点击依赖能进入更深一级的效果
+
 -[ ] 考虑向后兼容
 
 ### Configuration

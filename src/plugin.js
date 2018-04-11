@@ -25,21 +25,23 @@ class AnalyzeWebpackPlugin {
           <script>${jsString}</script>
       `
 
-      let outputFile = path.join(compilation.outputOptions.path, self.opts.filename)
+      // let outputFile = path.join(compilation.outputOptions.path, self.opts.filename)
 
-      mkdirp(path.dirname(outputFile), (mkdirpErr) => {
-        if (mkdirpErr) {
-          console.log('webpack-visualizer-plugin: error writing stats file')
-        }
+      // mkdirp(path.dirname(outputFile), (mkdirpErr) => {
+      //   fs.writeFile(outputFile, html, (err) => {
+      //     if (err) {
+      //       console.log('webpack-visualizer-plugin: error writing stats file')
+      //     }
+      //     callback()
+      //   })
+      // })
 
-        fs.writeFile(outputFile, html, (err) => {
-          if (err) {
-            console.log('webpack-visualizer-plugin: error writing stats file')
-          }
+      compilation.assets[`${self.opts.filename}`] = {
+        source: () => html,
+        size: () => html.length
+      }
 
-          callback()
-        })
-      })
+      callback()
     })
   }
 }

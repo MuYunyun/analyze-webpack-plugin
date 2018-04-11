@@ -1,6 +1,6 @@
 {
   "name": "analyze-webpack-plugin",
-  "version": "0.2.1",
+  "version": "0.2.5",
   "description": "analyze-webpack-plugin",
   "main": "lib/plugin.js",
   "repository": "https://github.com/MuYunyun/analyze-webpack-plugin",
@@ -30,6 +30,7 @@
     "test:manual": "webpack-dev-server test/manual/src/index.js --open --config test/manual/webpack.config.js"
   },
   "devDependencies": {
+    "analyze-webpack-plugin": "0.2.5",
     "babel-cli": "^6.26.0",
     "babel-jest": "^22.2.2",
     "babel-loader": "^7.1.4",
@@ -53,12 +54,6 @@
     "webpack-cli": "^2.0.13",
     "webpack-defaults": "^1.6.0",
     "webpack-dev-server": "^3.1.1"
-  },
-  "files": [
-    "dist"
-  ],
-  "peerDependencies": {
-    "webpack": "^4.0.0"
   },
   "pre-commit": "lint-staged",
   "lint-staged": {

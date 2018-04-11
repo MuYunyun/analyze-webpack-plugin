@@ -23,17 +23,12 @@ Upload your stats JSON file to [this site](http://muyunyun.cn/analyze-webpack-pl
 ### Plugin Usage
 
 ```js
-const AnalyzeWebpackPlugin = require('analyze-webpack-plugin')
+const AnalyzeWebpackPlugin = require('analyze-webpack-plugin').default
 
 module.exports = {
-  entry: './index.js',
-  output: {
-    path: path.join(__dirname, 'dist'),
-    filename: '[name].[chunkhash:8].js',
-  },
-  module: {},
   plugins: [
-    new AnalyzeWebpackPlugin({}),
+    new AnalyzeWebpackPlugin(), // 默认生成 analyze.html
+    // 也可以 new AnalyzeWebpackPlugin({ name: 'analyze.html' }) 也可以指定自定义文件
   ],
 }
 ```
@@ -42,7 +37,7 @@ module.exports = {
 
 该插件 fork 自 [webpack-visualizer](https://github.com/chrisbateman/webpack-visualizer/blob/master/package.json)，目前扩展出的功能如下：
 
-- [ ] webpack 3.x/4.x 的插件
+- [x] webpack 3.x/4.x 的插件
 
 - [x] 升级插件的技术栈，比如升级 d3 到 v4 版本
 

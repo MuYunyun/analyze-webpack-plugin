@@ -187,7 +187,7 @@ export default class extends Component {
           <p>If you're customizing your stats output or using webpack-stats-plugin, be sure to set <code>chunkModules</code> to <code>true</code> (see <a href="https://github.com/FormidableLabs/webpack-stats-plugin/issues/18#issuecomment-268699997">here</a> for an example).</p>
 
           <h2>Try the Plugin!</h2>
-          <p>This tool is also available as a webpack plugin. See <a href="https://github.com/chrisbateman/webpack-visualizer#plugin-usage">here</a> for usage details.</p>
+          <p>This tool is also available as a webpack plugin. See <a href="https://github.com/MuYunyun/analyze-webpack-plugin#plugin-usage">here</a> for usage details.</p>
           <p><code>npm install analyze-webpack-plugin</code></p>
         </Footer>
       </div>

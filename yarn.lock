@@ -123,6 +123,17 @@ amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
 
+analyze-webpack-plugin@0.2.5:
+  version "0.2.5"
+  resolved "https://registry.yarnpkg.com/analyze-webpack-plugin/-/analyze-webpack-plugin-0.2.5.tgz#a90d8df6a17637d10a970477371d020f81f62569"
+  dependencies:
+    d3 "^5.0.0"
+    loader-utils "^1.1.0"
+    mkdirp "^0.5.1"
+    react "^16.3.1"
+    react-dom "^16.3.1"
+    webpack-sources "^1.1.0"
+
 ansi-escapes@^1.0.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/ansi-escapes/-/ansi-escapes-1.4.0.tgz#d3a8a83b319aa67793662b13e761c7911422306e"

@@ -19,10 +19,10 @@ export default class extends Component {
     }
   }
 
-  createChart(root) {
+  createChart(json) {
     let details = createVisualization({
       svgElement: this.refs.svg,
-      root,
+      json,
       onHover: this.props.onHover,
       onUnhover: this.props.onUnhover
     });

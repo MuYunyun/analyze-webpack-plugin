@@ -12,7 +12,6 @@ module.exports = {
     path.resolve(appDirecotory, 'src/site/main')
   ],
   output: { // https://doc.webpack-china.org/configuration/output/
-    // path: path.resolve(appDirecotory, 'dist'), // 开发环境这句没用，但是生成环境要用
     pathinfo: true, // 告诉 webpack 在 bundle 中引入「所包含模块信息」的相关注释，开发环境用
     filename: 'build.js', // 这不是真实的文件，其仅仅是在开发环境下由 WebpackDevServer 提供的一个虚拟路径
   },
@@ -29,6 +28,12 @@ module.exports = {
         ],
       },
     ],
+  },
+  devServer: { // 开发模式使用
+    inline: true, // https://doc.webpack-china.org/configuration/dev-server/#devserver-inline
+    contentBase: 'dist-site',
+    host: process.env.IP,
+    port: process.env.PORT
   },
   node: {
     dgram: 'empty',

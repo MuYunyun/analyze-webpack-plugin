@@ -19,6 +19,7 @@
     "buildsite": "webpack --config config/webpack.site.js && babel-node src/site/serverRender.js",
     "postbuildsite": "cp src/shared/style.css test/stats-demo.json dist-site",
     "dev": "webpack-dev-server --config config/webpack.dev.js",
+    "publishSite": "git subtree push --prefix=dist-site origin gh-pages",
     "lint": "eslint --cache src test",
     "lint-staged": "lint-staged",
     "prepublish": "npm run build",

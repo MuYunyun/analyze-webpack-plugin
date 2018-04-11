@@ -1,4 +1,4 @@
-import AnalyzeWebpackPlugin from '../../../src/cjs'
+import AnalyzeWebpackPlugin from '../../../lib/plugin'
 
 const path = require('path')
 
@@ -9,6 +9,6 @@ module.exports = {
     filename: '[name].[chunkhash:8].js',
   },
   plugins: [
-    new AnalyzeWebpackPlugin({ filename: 'analyze.html' }),
+    new AnalyzeWebpackPlugin({ filename: './analyze.html' }),
   ],
-};
+}

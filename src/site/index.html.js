@@ -20,5 +20,5 @@ export default function (cfg) {
     ga('send', 'pageview');
     </script>
 </body>`
-  );
+  )
 }

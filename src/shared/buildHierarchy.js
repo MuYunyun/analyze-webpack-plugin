@@ -1,19 +1,19 @@
 export default function buildHierarchy(modules) {
-  let maxDepth = 1;
+  let maxDepth = 1
 
   let root = {
     children: [],
     name: 'root'
-  };
+  }
 
   modules.forEach(function addToTree(module) {
     // remove this module if either:
     // - index is null
     // - issued by extract-text-plugin
-    let extractInIdentifier = module.identifier.indexOf('extract-text-webpack-plugin') !== -1;
-    let extractInIssuer = module.issuer && module.issuer.indexOf('extract-text-webpack-plugin') !== -1;
+    let extractInIdentifier = module.identifier.indexOf('extract-text-webpack-plugin') !== -1
+    let extractInIssuer = module.issuer && module.issuer.indexOf('extract-text-webpack-plugin') !== -1
     if (extractInIdentifier || extractInIssuer || module.index === null) {
-      return;
+      return
     }
 
     let mod = {
@@ -21,51 +21,51 @@ export default function buildHierarchy(modules) {
       fullName: module.name,
       size: module.size,
       reasons: module.reasons
-    };
+    }
 
-    let depth = mod.fullName.split('/').length - 1;
+    let depth = mod.fullName.split('/').length - 1
     if (depth > maxDepth) {
-      maxDepth = depth;
+      maxDepth = depth
     }
 
-    let fileName = mod.fullName;
+    let fileName = mod.fullName
 
-    let beginning = mod.fullName.slice(0, 2);
+    let beginning = mod.fullName.slice(0, 2)
     if (beginning === './') {
-      fileName = fileName.slice(2);
+      fileName = fileName.slice(2)
     }
 
-    getFile(mod, fileName, root);
-  });
+    getFile(mod, fileName, root)
+  })
 
-  root.maxDepth = maxDepth;
+  root.maxDepth = maxDepth
 
-  return root;
+  return root
 }
 
 
 function getFile(module, fileName, parentTree) {
-  let charIndex = fileName.indexOf('/');
+  let charIndex = fileName.indexOf('/')
 
   if (charIndex !== -1) {
-    let folder = fileName.slice(0, charIndex);
+    let folder = fileName.slice(0, charIndex)
     if (folder === '~') {
-      folder = 'node_modules';
+      folder = 'node_modules'
     }
 
-    let childFolder = getChild(parentTree.children, folder);
+    let childFolder = getChild(parentTree.children, folder)
     if (!childFolder) {
       childFolder = {
         name: folder,
         children: []
-      };
-      parentTree.children.push(childFolder);
+      }
+      parentTree.children.push(childFolder)
     }
 
-    getFile(module, fileName.slice(charIndex + 1), childFolder);
+    getFile(module, fileName.slice(charIndex + 1), childFolder)
   } else {
-    module.name = fileName;
-    parentTree.children.push(module);
+    module.name = fileName
+    parentTree.children.push(module)
   }
 }
 
@@ -73,7 +73,7 @@ function getFile(module, fileName, parentTree) {
 function getChild(arr, name) {
   for (let i = 0; i < arr.length; i++) {
     if (arr[i].name === name) {
-      return arr[i];
+      return arr[i]
     }
   }
 }

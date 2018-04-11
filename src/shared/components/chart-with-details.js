@@ -1,52 +1,52 @@
-import React, { PropTypes } from 'react';
-import Chart from './chart';
-import ChartDetails from './chart-details';
-import Breadcrumbs from './breadcrumbs';
+import React, { Component } from 'react'
+import Chart from './chart'
+import ChartDetails from './chart-details'
+import Breadcrumbs from './breadcrumbs'
 
-export default class ChartWithDetails extends React.Component {
+export default class ChartWithDetails extends Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
       breadcrumbNodes: [],
       hoverDetails: null,
       paddingDiff: 0
-    };
+    }
 
-    this.onChartHover = this.onChartHover.bind(this);
-    this.onChartUnhover = this.onChartUnhover.bind(this);
-    this.onChartRender = this.onChartRender.bind(this);
+    this.onChartHover = this.onChartHover.bind(this)
+    this.onChartUnhover = this.onChartUnhover.bind(this)
+    this.onChartRender = this.onChartRender.bind(this)
   }
 
   onChartHover(details) {
     this.setState({
       hoverDetails: details,
       breadcrumbNodes: details.ancestorArray
-    });
+    })
   }
 
   onChartUnhover() {
     this.setState({
       hoverDetails: null,
       breadcrumbNodes: []
-    });
+    })
   }
 
   onChartRender(details) {
     this.setState({
       paddingDiff: details.removedTopPadding
-    });
+    })
   }
 
   render() {
-    let chartAreaClass = 'chart';
+    let chartAreaClass = 'chart'
 
     if (this.props.chartData && this.props.chartData.maxDepth > 9) {
-      chartAreaClass += ' chart--large';
+      chartAreaClass += ' chart--large'
     }
 
     if (!this.props.bundleDetails || Object.keys(this.props.bundleDetails).length === 0) {
-      return null;
+      return null
     }
 
     return (
@@ -60,6 +60,6 @@ export default class ChartWithDetails extends React.Component {
         />
         <Breadcrumbs nodes={this.state.breadcrumbNodes} />
       </div>
-    );
+    )
   }
 }

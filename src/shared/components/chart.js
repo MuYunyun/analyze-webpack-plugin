@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import createVisualization from '../createVisualization';
+import React, { Component } from 'react'
+import createVisualization from '../createVisualization'
 
 export default class extends Component {
   constructor() {
@@ -9,13 +9,13 @@ export default class extends Component {
 
   componentDidMount() {
     if (this.props.data) {
-      this.createChart(this.props.data);
+      this.createChart(this.props.data)
     }
   }
 
   componentDidUpdate(prevProps) {
     if (this.props.data && this.props.data !== prevProps.data) {
-      this.createChart(this.props.data);
+      this.createChart(this.props.data)
     }
   }
 
@@ -25,18 +25,18 @@ export default class extends Component {
       json,
       onHover: this.props.onHover,
       onUnhover: this.props.onUnhover
-    });
+    })
 
     if (this.props.onRender) {
-      this.props.onRender(details);
+      this.props.onRender(details)
     }
   }
 
   render() {
     if (!this.props.data) {
-      return null;
+      return null
     }
 
-    return <svg ref="svg" />;
+    return <svg ref="svg" />
   }
 }

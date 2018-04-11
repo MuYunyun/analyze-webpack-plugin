@@ -1,15 +1,15 @@
-import React, { PropTypes } from 'react';
+import React from 'react'
 
 let Breadcrumbs = props => (
   <div className="breadcrumbs">
     {props.nodes.map((node, i) => {
-      let result = ' > ';
+      let result = ' > '
       if (i === 0) {
-        result = '';
+        result = ''
       }
-      return result + node.name;
+      return result + node.data.name
     })}
   </div>
-);
+)
 
-export default Breadcrumbs;
+export default Breadcrumbs

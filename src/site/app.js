@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import ChartWithDetails from '../shared/components/chart-with-details';
-import Footer from '../shared/components/footer';
-import addDragDrop from '../shared/util/dragdrop';
-import readFile from '../shared/util/readFile';
-import formatSize from '../shared/util/formatSize';
-import { getAssetsData, getBundleDetails, ERROR_CHUNK_MODULES } from '../shared/util/stat-utils';
-import buildHierarchy from '../shared/buildHierarchy';
+import React, { Component } from 'react'
+import ChartWithDetails from '../shared/components/chart-with-details'
+import Footer from '../shared/components/footer'
+import addDragDrop from '../shared/util/dragdrop'
+import readFile from '../shared/util/readFile'
+import formatSize from '../shared/util/formatSize'
+import { getAssetsData, getBundleDetails, ERROR_CHUNK_MODULES } from '../shared/util/stat-utils'
+import buildHierarchy from '../shared/buildHierarchy'
 
 export default class extends Component {
   constructor() {
@@ -29,34 +29,34 @@ export default class extends Component {
     addDragDrop({
       el: this.refs.UploadArea,
       callback: file => {
-        readFile(file, this.handleFileUpload);
+        readFile(file, this.handleFileUpload)
       },
       onDragStart: () => {
         this.setState({
           dragging: true
-        });
+        })
       },
       onDragEnd: () => {
         this.setState({
           dragging: false
-        });
+        })
       }
-    });
+    })
   }
 
   uploadAreaClick() {
     if (this.state.needsUpload) {
-      this.refs.FileInput.click();
+      this.refs.FileInput.click()
     }
   }
 
   onFileChange(ev) {
-    readFile(ev.target.files[0], this.handleFileUpload);
+    readFile(ev.target.files[0], this.handleFileUpload)
   }
 
   handleFileUpload(jsonText) {
-    let stats = JSON.parse(jsonText);
-    let assets = getAssetsData(stats.assets, stats.chunks);
+    let stats = JSON.parse(jsonText)
+    let assets = getAssetsData(stats.assets, stats.chunks)
 
     this.setState({
       assets,
@@ -64,52 +64,52 @@ export default class extends Component {
       needsUpload: false,
       selectedAssetIndex: 0,
       stats
-    });
+    })
   }
 
   loadDemo() {
     this.setState({
       demoLoading: true
-    });
+    })
 
-    let request = new XMLHttpRequest();
-    request.open('GET', 'stats-demo.json', true);
+    let request = new XMLHttpRequest()
+    request.open('GET', 'stats-demo.json', true)
 
     request.onload = () => {
       this.setState({
         demoLoading: false
-      });
+      })
 
       if (request.status >= 200 && request.status < 400) {
-        this.handleFileUpload(request.response);
+        this.handleFileUpload(request.response)
       }
-    };
+    }
 
-    request.send();
+    request.send()
   }
 
   onAssetChange(ev) {
-    let selectedAssetIndex = Number(ev.target.value);
-    let modules, chartData, error;
+    let selectedAssetIndex = Number(ev.target.value)
+    let modules, chartData, error
 
     if (selectedAssetIndex === 0) {
-      modules = this.state.stats.modules;
+      modules = this.state.stats.modules
     } else {
-      let asset = this.state.assets[selectedAssetIndex - 1];
-      modules = asset.chunk.modules;
+      let asset = this.state.assets[selectedAssetIndex - 1]
+      modules = asset.chunk.modules
     }
 
     if (modules) {
-      chartData = buildHierarchy(modules);
+      chartData = buildHierarchy(modules)
     } else {
-      error = ERROR_CHUNK_MODULES;
+      error = ERROR_CHUNK_MODULES
     }
 
     this.setState({
       chartData,
       error,
       selectedAssetIndex
-    });
+    })
   }
 
   renderUploadArea(uploadAreaClass) {
@@ -127,35 +127,35 @@ export default class extends Component {
             onChange={this.onFileChange}
           />
         </div>
-      );
+      )
     }
   }
 
   render() {
-    let demoButton, assetList;
-    let uploadAreaClass = 'uploadArea';
-    let bundleDetails = {};
+    let demoButton, assetList
+    let uploadAreaClass = 'uploadArea'
+    let bundleDetails = {}
 
     if (this.state.dragging) {
-      uploadAreaClass += ' uploadArea--dragging';
+      uploadAreaClass += ' uploadArea--dragging'
     }
 
     if (this.state.needsUpload) {
-      uploadAreaClass += ' uploadArea--needsUpload';
+      uploadAreaClass += ' uploadArea--needsUpload'
 
-      let demoClass = 'destyledButton';
+      let demoClass = 'destyledButton'
       if (this.state.demoLoading) {
-        demoClass += ' demoLoading';
+        demoClass += ' demoLoading'
       }
 
-      demoButton = <button onClick={this.loadDemo} className={demoClass} style={{ marginTop: '0.5em' }}>Try a Demo</button>;
+      demoButton = <button onClick={this.loadDemo} className={demoClass} style={{ marginTop: '0.5em' }}>Try a Demo</button>
     }
 
     if (this.state.stats) {
       bundleDetails = getBundleDetails({
         assets: this.state.assets,
         selectedAssetIndex: this.state.selectedAssetIndex
-      });
+      })
     }
 
     if (this.state.assets.length > 1) {
@@ -166,7 +166,7 @@ export default class extends Component {
             {this.state.assets.map((asset, i) => <option key={i} value={i + 1}>{asset.name} ({formatSize(asset.size)})</option>)}
           </select>
         </div>
-      );
+      )
     }
 
     return (
@@ -191,6 +191,6 @@ export default class extends Component {
           <p><code>npm install analyze-webpack-plugin</code></p>
         </Footer>
       </div>
-    );
+    )
   }
 }

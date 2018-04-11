@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 
 export default props => (
@@ -14,4 +14,4 @@ export default props => (
     <h2>Acknowledgements</h2>
     <p><a href="https://github.com/chrisbateman/webpack-visualizer">Disc</a> for Browserify did this first. Thanks also to <a href="https://gist.github.com/kerryrodden/7090426">this example</a> from the D3 gallery for demonstating how to create sunburst charts.</p>
   </footer>
-);
+)

@@ -42,7 +42,7 @@ module.exports = {
 
 该插件 fork 自 [webpack-visualizer](https://github.com/chrisbateman/webpack-visualizer/blob/master/package.json)，目前扩展出的功能如下：
 
-- [x] 支持作为 webpack 4.x 的插件
+- [ ] webpack 3.x/4.x 的插件
 
 - [x] 升级插件的技术栈，比如升级 d3 到 v4 版本
 

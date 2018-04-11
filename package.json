@@ -1,6 +1,6 @@
 {
   "name": "analyze-webpack-plugin",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "analyze-webpack-plugin",
   "main": "lib/plugin.js",
   "repository": "https://github.com/MuYunyun/analyze-webpack-plugin",

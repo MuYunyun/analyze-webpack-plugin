@@ -1,4 +1,5 @@
-import AnalyzeWebpackPlugin from '../../../lib/plugin'
+// import AnalyzeWebpackPlugin from '../../../lib/plugin'
+const AnalyzeWebpackPlugin = require("../../../lib/plugin").default
 
 const path = require('path')
 

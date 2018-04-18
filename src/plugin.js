@@ -11,10 +11,20 @@ class AnalyzeWebpackPlugin {
 
   apply(compiler) {
     const self = this
+    // compiler.plugin("after-resolvers", function() {
+    //   console.log('1234567890')
+    // })
+    // compiler.plugin("after-environment", function() {
+    //   console.log('12345678')
+    // })
+    // compiler.plugin("before-run", function() {
+    //   console.log('123456')
+    // })
+
     compiler.plugin("emit", function (compilation, callback) {
       let stats = compilation.getStats().toJson({ chunkModules: true })
       let stringifiedStats = JSON.stringify(stats)
-      stringifiedStats = stringifiedStats.replace(/</g, '&lt;').replace(/</g, '&gt;')
+      stringifiedStats = stringifiedStats.replace(/</g, '&lt;').replace(/>/g, '&gt;')
 
       let html = `<!doctype html>
           <meta charset="UTF-8">
@@ -24,17 +34,6 @@ class AnalyzeWebpackPlugin {
           <script>window.stats = ${stringifiedStats};</script>
           <script>${jsString}</script>
       `
-
-      // let outputFile = path.join(compilation.outputOptions.path, self.opts.filename)
-
-      // mkdirp(path.dirname(outputFile), (mkdirpErr) => {
-      //   fs.writeFile(outputFile, html, (err) => {
-      //     if (err) {
-      //       console.log('webpack-visualizer-plugin: error writing stats file')
-      //     }
-      //     callback()
-      //   })
-      // })
 
       compilation.assets[`${self.opts.filename}`] = {
         source: () => html,
